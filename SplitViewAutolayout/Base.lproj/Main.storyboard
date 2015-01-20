@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6198" systemVersion="14A297b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6198"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -641,12 +641,12 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SplitViewAutolayout" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller - Window-->
+        <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
@@ -657,25 +657,99 @@
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                        <segue destination="94i-1S-Jgi" kind="relationship" relationship="window.shadowedContentViewController" id="ttJ-yC-DsN"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="hIz-AP-VOD">
+        <!--Split View Controller-->
+        <scene sceneID="gnl-XQ-0Ip">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <splitViewController id="94i-1S-Jgi" customClass="SplitViewController" customModule="SplitViewAutolayout" customModuleProvider="target" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem id="bC1-mn-79b"/>
+                        <splitViewItem id="Pmb-Ub-U5B"/>
+                    </splitViewItems>
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="gef-GU-Tof">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </splitView>
+                    <connections>
+                        <segue destination="pet-8I-mJ5" kind="relationship" relationship="splitItems" id="9Cp-2w-cMb"/>
+                        <segue destination="PJ8-jb-UOv" kind="relationship" relationship="splitItems" id="ghh-js-kL1"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="8uL-vk-6Y8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="673"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aK1-SY-edU">
+            <objects>
+                <viewController id="pet-8I-mJ5" sceneMemberID="viewController">
+                    <view key="view" id="zKI-tf-L9x" customClass="MenuView" customModule="SplitViewAutolayout" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="64" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
-                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="87Q-xW-xQR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="742" y="283"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="q9C-cv-6Sm">
+            <objects>
+                <viewController id="PJ8-jb-UOv" sceneMemberID="viewController">
+                    <view key="view" id="TLs-cY-YCP">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ua0-bp-Exj">
+                                <rect key="frame" x="14" y="252" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a1A-F0-xn2">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ATo-44-sM2">
+                                <rect key="frame" x="354" y="252" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kZF-Db-YII">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7fm-sv-t6u">
+                                <rect key="frame" x="14" y="13" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5h6-Me-O21">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ixn-HB-ZLy">
+                                <rect key="frame" x="354" y="13" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jxp-aM-4d3">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ATo-44-sM2" secondAttribute="trailing" constant="20" id="1Ls-iY-dFg"/>
+                            <constraint firstItem="ATo-44-sM2" firstAttribute="top" secondItem="TLs-cY-YCP" secondAttribute="top" constant="20" id="6G5-U1-Zyi"/>
+                            <constraint firstItem="ua0-bp-Exj" firstAttribute="top" secondItem="TLs-cY-YCP" secondAttribute="top" constant="20" id="98W-Ca-RtG"/>
+                            <constraint firstAttribute="trailing" secondItem="ixn-HB-ZLy" secondAttribute="trailing" constant="20" id="ACT-A8-T3f"/>
+                            <constraint firstItem="ua0-bp-Exj" firstAttribute="leading" secondItem="TLs-cY-YCP" secondAttribute="leading" constant="20" id="Ylm-Is-krk"/>
+                            <constraint firstAttribute="bottom" secondItem="ixn-HB-ZLy" secondAttribute="bottom" constant="20" id="hZg-Nh-M8e"/>
+                            <constraint firstAttribute="bottom" secondItem="7fm-sv-t6u" secondAttribute="bottom" constant="20" id="oc9-GR-yCw"/>
+                            <constraint firstItem="7fm-sv-t6u" firstAttribute="leading" secondItem="TLs-cY-YCP" secondAttribute="leading" constant="20" id="z0x-wZ-Jd8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="59B-Ki-7gD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="742" y="689"/>
         </scene>
     </scenes>
 </document>
