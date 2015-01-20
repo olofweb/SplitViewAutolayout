@@ -14,8 +14,14 @@ class SplitViewController: NSSplitViewController {
         super.viewDidLoad()
         // Do view setup here.
         
+        
+        
+        // pour que la MenuView fasse 64 pixels de large à l'ouverture de la fenêtre, il faut commenter 
+        // cette ligne (elle n'a aucun effet)...
         self.splitView.setPosition(64, ofDividerAtIndex: 0)
         
+        // ... et décommenter les lignes suivantes :
+                
 //        func delay(delay:Double, closure:()->()) {
 //            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
 //            dispatch_after(time, dispatch_get_main_queue(), closure)
