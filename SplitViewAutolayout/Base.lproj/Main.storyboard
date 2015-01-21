@@ -669,14 +669,18 @@
             <objects>
                 <splitViewController id="94i-1S-Jgi" customClass="SplitViewController" customModule="SplitViewAutolayout" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem id="bC1-mn-79b"/>
+                        <splitViewItem holdingPriority="251" id="bC1-mn-79b"/>
                         <splitViewItem id="Pmb-Ub-U5B"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="gef-GU-Tof">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="94i-1S-Jgi" id="OzR-1c-ewu"/>
+                        </connections>
                     </splitView>
                     <connections>
+                        <outlet property="view" destination="gef-GU-Tof" id="CdQ-Oa-09o"/>
                         <segue destination="pet-8I-mJ5" kind="relationship" relationship="splitItems" id="9Cp-2w-cMb"/>
                         <segue destination="PJ8-jb-UOv" kind="relationship" relationship="splitItems" id="ghh-js-kL1"/>
                     </connections>
