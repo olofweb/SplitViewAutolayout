@@ -12,23 +12,42 @@ class SplitViewController: NSSplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
+        var menu: NSSplitViewItem = self.splitViewItems[0] as NSSplitViewItem
+        var main: NSSplitViewItem = self.splitViewItems[1] as NSSplitViewItem
+        
+        // le menu doit faire 64 pixels de large
+        self.view.addConstraint(NSLayoutConstraint(
+            item: menu.viewController.view,
+            attribute: NSLayoutAttribute.Width,
+            relatedBy: NSLayoutRelation.Equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.NotAnAttribute,
+            multiplier: 1,
+            constant: 64
+            ))
+        
+        // le menu (et donc aussi la partie principale), ne doit pas faire moins de 200 pixels de haut
+        self.view.addConstraint(NSLayoutConstraint(
+            item: menu.viewController.view,
+            attribute: NSLayoutAttribute.Height,
+            relatedBy: NSLayoutRelation.GreaterThanOrEqual,
+            toItem: nil,
+            attribute: NSLayoutAttribute.NotAnAttribute,
+            multiplier: 1,
+            constant: 200
+            ))
         
         
-        
-        // pour que la MenuView fasse 64 pixels de large à l'ouverture de la fenêtre, il faut commenter 
-        // cette ligne (elle n'a aucun effet)...
-        self.splitView.setPosition(64, ofDividerAtIndex: 0)
-        
-        // ... et décommenter les lignes suivantes :
-                
-//        func delay(delay:Double, closure:()->()) {
-//            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-//            dispatch_after(time, dispatch_get_main_queue(), closure)
-//        }
-//        
-//        delay(0.05) {
-//                    self.splitView.setPosition(64, ofDividerAtIndex: 0)
-//        }
+        // la partie principale ne doit pas faire moins de 300 pixels de large
+        self.view.addConstraint(NSLayoutConstraint(
+            item: main.viewController.view,
+            attribute: NSLayoutAttribute.Width,
+            relatedBy: NSLayoutRelation.GreaterThanOrEqual,
+            toItem: nil,
+            attribute: NSLayoutAttribute.NotAnAttribute,
+            multiplier: 1,
+            constant: 300
+            ))
     }
 }
