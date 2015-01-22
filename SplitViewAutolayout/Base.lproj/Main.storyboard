@@ -667,12 +667,12 @@
         <!--Split View Controller-->
         <scene sceneID="gnl-XQ-0Ip">
             <objects>
-                <splitViewController id="94i-1S-Jgi" customClass="SplitViewController" customModule="SplitViewAutolayout" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController showSeguePresentationStyle="single" id="94i-1S-Jgi" customClass="SplitViewController" customModule="SplitViewAutolayout" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem holdingPriority="251" id="bC1-mn-79b"/>
                         <splitViewItem id="Pmb-Ub-U5B"/>
                     </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="gef-GU-Tof">
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="gef-GU-Tof" customClass="SplitView" customModule="SplitViewAutolayout" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
