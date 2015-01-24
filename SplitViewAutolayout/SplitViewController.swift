@@ -51,40 +51,63 @@ class SplitViewController: NSSplitViewController {
             ))
     }
     
-    func test() {
+    // Supprime toutes les vues présentes dans la vue passée en paramètre
+    func removeSubviewsFromView(aView : NSView) {
+
+        for view in aView.subviews {
+            view.removeFromSuperview()
+        }
+    }
+    
+    func showPage1View() {
         
         // container
         var container : NSSplitViewItem = self.splitViewItems[1] as NSSplitViewItem
         var containerViewController : NSViewController = container.viewController as NSViewController
         var containerView : NSView = containerViewController.view
         
+        removeSubviewsFromView(containerView)
+        
         // vue à afficher
         var page1ViewController : NSViewController = storyboard?.instantiateControllerWithIdentifier("page_1") as NSViewController
         var page1View : Page1View = page1ViewController.view as Page1View
         
-//        page1View.translatesAutoresizingMaskIntoConstraints = false
+        page1View.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(page1View)
-    
-        
-//        containerView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[page1View]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: ["page1View": page1View]))
 
+        // la nouvelle vue doit prendre toute la place disponible
+        containerView.addConstraint(NSLayoutConstraint(item: page1View, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0))
         
-//        self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewContoller" bundle:nil];
-//        NSView *containerView = self.window.contentView;
-//        NSView *contentView = self.mainViewController.view;
-//        [contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
-//        [containerView addSubview:contentView];
-//        
-//        NSDictionary *viewBindings = NSDictionaryOfVariableBindings(contentView);
-//        [containerView addConstraints:[NSLayoutConstraints constraintsWithVisualFormat:@"H:|[contentView]|" options:0 metrics:nil views:viewBindings];
-//        [containerView addConstraints:[NSLayoutConstraints constraintsWithVisualFormat:@"V:|[contentView]|" options:0 metrics:nil views:viewBindings];
-      
-        containerView.addConstraint(NSLayoutConstraint(item: page1View, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: 0.0))
+        containerView.addConstraint(NSLayoutConstraint(item: page1View, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0))
         
-        containerView.addConstraint(NSLayoutConstraint(item: page1View, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Trailing, multiplier: 1.0, constant: 0.0))
+        containerView.addConstraint(NSLayoutConstraint(item: page1View, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0))
+        
+        containerView.addConstraint(NSLayoutConstraint(item: page1View, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0))
+    }
 
-        //          containerView.addConstraint(NSLayoutConstraint(item: page1View, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 0))
-//
-//        containerView.addConstraint(NSLayoutConstraint(item: page1ViewController.view, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: 0))
+    func showPage2View() {
+        
+        // container
+        var container : NSSplitViewItem = self.splitViewItems[1] as NSSplitViewItem
+        var containerViewController : NSViewController = container.viewController as NSViewController
+        var containerView : NSView = containerViewController.view
+        
+        removeSubviewsFromView(containerView)
+        
+        // vue à afficher
+        var page2ViewController : NSViewController = storyboard?.instantiateControllerWithIdentifier("page_2") as NSViewController
+        var page2View : Page2View = page2ViewController.view as Page2View
+        
+        page2View.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(page2View)
+        
+        // la nouvelle vue doit prendre toute la place disponible
+        containerView.addConstraint(NSLayoutConstraint(item: page2View, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0))
+        
+        containerView.addConstraint(NSLayoutConstraint(item: page2View, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0))
+        
+        containerView.addConstraint(NSLayoutConstraint(item: page2View, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0))
+        
+        containerView.addConstraint(NSLayoutConstraint(item: page2View, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0))
     }
 }

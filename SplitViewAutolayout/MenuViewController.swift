@@ -15,9 +15,16 @@ class MenuViewController: NSViewController {
         // Do view setup here.
     }
     
-    @IBAction func PlusClic(sender: AnyObject) {
-     
-        var splitViewController : SplitViewController = self.parentViewController! as SplitViewController
-        splitViewController.test()
+
+    @IBAction func But1Click(sender: AnyObject) {
+        let splitVeiwController : SplitViewController = self.parentViewController! as SplitViewController
+        
+        splitVeiwController.showPage1View()
+    }
+
+    @IBAction func But2Click(sender: AnyObject) {
+        let splitVeiwController : SplitViewController = self.parentViewController! as SplitViewController
+        
+        splitVeiwController.showPage2View()
     }
 }

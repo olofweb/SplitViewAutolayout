@@ -699,12 +699,22 @@
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3hX-ED-qXE">
                                 <rect key="frame" x="8" y="253" width="50" height="32"/>
-                                <buttonCell key="cell" type="push" title="+" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="K0g-7J-9mb">
+                                <buttonCell key="cell" type="push" title="1" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="K0g-7J-9mb">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="PlusClic:" target="pet-8I-mJ5" id="8T2-Fc-yk9"/>
+                                    <action selector="But1Click:" target="pet-8I-mJ5" id="bg4-7m-cFW"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zyf-sv-ksL">
+                                <rect key="frame" x="8" y="220" width="50" height="32"/>
+                                <buttonCell key="cell" type="push" title="2" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fqw-2P-zlT">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="But2Click:" target="pet-8I-mJ5" id="aiJ-d8-zvP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -721,16 +731,6 @@
                     <view key="view" id="TLs-cY-YCP" customClass="ContainerView" customModule="SplitViewAutolayout" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G5j-jx-7In">
-                                <rect key="frame" x="175" y="142" width="100" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Container" id="8Rf-Bi-ZsX">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
                     </view>
                 </viewController>
                 <customObject id="59B-Ki-7gD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -755,10 +755,44 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="view" destination="1b4-uk-auK" id="Obg-Dt-jfG"/>
+                    </connections>
                 </viewController>
                 <customObject id="RD7-FV-phY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="742" y="1074"/>
+        </scene>
+        <!--Page 2-->
+        <scene sceneID="P0X-Xe-3Hh">
+            <objects>
+                <viewController title="Page 2" storyboardIdentifier="page_2" id="qpd-TQ-8PJ" sceneMemberID="viewController">
+                    <view key="view" id="0fz-9e-hLR">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hat-au-zZk" customClass="Page2View" customModule="SplitViewAutolayout" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eiy-D1-iQ9">
+                                        <rect key="frame" x="175" y="142" width="100" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Page 2" id="RrW-fr-IYv">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                            </view>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="view" destination="Hat-au-zZk" id="DEs-gJ-07U"/>
+                    </connections>
+                </viewController>
+                <customObject id="vRF-oO-MM8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="742" y="1425"/>
         </scene>
     </scenes>
 </document>
