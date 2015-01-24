@@ -717,6 +717,16 @@
                                     <action selector="But2Click:" target="pet-8I-mJ5" id="aiJ-d8-zvP"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rs7-fg-jmT">
+                                <rect key="frame" x="8" y="187" width="50" height="32"/>
+                                <buttonCell key="cell" type="push" title="3" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7ms-hw-CMo">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="But3Click:" target="pet-8I-mJ5" id="PL3-2w-tnt"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                 </viewController>

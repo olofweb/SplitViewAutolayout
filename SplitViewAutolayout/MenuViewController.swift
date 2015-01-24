@@ -27,4 +27,10 @@ class MenuViewController: NSViewController {
         
         splitVeiwController.showPage2View()
     }
+    
+    @IBAction func But3Click(sender: AnyObject) {
+        let splitVeiwController : SplitViewController = self.parentViewController! as SplitViewController
+        
+        splitVeiwController.showPage3View()
+    }
 }

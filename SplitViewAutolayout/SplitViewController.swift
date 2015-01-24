@@ -110,4 +110,32 @@ class SplitViewController: NSSplitViewController {
         
         containerView.addConstraint(NSLayoutConstraint(item: page2View, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0))
     }
+    
+    func showPage3View() {
+        
+        // container
+        var container : NSSplitViewItem = self.splitViewItems[1] as NSSplitViewItem
+        var containerViewController : NSViewController = container.viewController as NSViewController
+        var containerView : NSView = containerViewController.view
+        
+        removeSubviewsFromView(containerView)
+        
+        // vue à afficher
+        var secondStoryboard : NSStoryboard = NSStoryboard(name: "SecondStoryboard", bundle: nil)!
+        var page3ViewController : NSViewController = secondStoryboard.instantiateControllerWithIdentifier("page_3") as NSViewController
+        var page3View : Page3View = page3ViewController.view as Page3View
+        
+        page3View.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(page3View)
+        
+        // la nouvelle vue doit prendre toute la place disponible
+        containerView.addConstraint(NSLayoutConstraint(item: page3View, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0))
+        
+        containerView.addConstraint(NSLayoutConstraint(item: page3View, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0))
+        
+        containerView.addConstraint(NSLayoutConstraint(item: page3View, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0))
+        
+        containerView.addConstraint(NSLayoutConstraint(item: page3View, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0))
+
+    }
 }
