@@ -1,5 +1,5 @@
 //
-//  SplitView.swift
+//  Page1View.swift
 //  SplitViewAutolayout
 //
 //  Created by Olof on 22.01.15.
@@ -8,16 +8,14 @@
 
 import Cocoa
 
-class SplitView: NSSplitView {
+class Page1View: NSView {
 
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
 
         // Drawing code here.
-    }
-    
-    override func resetCursorRects() {
-        self.addCursorRect(self.bounds, cursor: NSCursor.arrowCursor())
+        NSColor.blueColor().setFill()
+        NSRectFill(dirtyRect)
     }
     
 }
