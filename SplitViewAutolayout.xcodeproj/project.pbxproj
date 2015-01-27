@@ -19,6 +19,7 @@
 		D5577F3F1A6ECA1D00CBE0AE /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5577F3E1A6ECA1D00CBE0AE /* MenuView.swift */; };
 		D5577F411A6ECAB300CBE0AE /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5577F401A6ECAB300CBE0AE /* SplitViewController.swift */; };
 		D557F0261A71886D00FE297B /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557F0251A71886D00FE297B /* SplitView.swift */; };
+		D57853631A781DE100B38587 /* NSViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57853621A781DE100B38587 /* NSViewExtensions.swift */; };
 		D5B186861A7197BB00E20C51 /* Page1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B186851A7197BB00E20C51 /* Page1View.swift */; };
 		D5B186881A7197CB00E20C51 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B186871A7197CB00E20C51 /* ContainerView.swift */; };
 		D5B1868A1A7197E000E20C51 /* Page1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B186891A7197E000E20C51 /* Page1ViewController.swift */; };
@@ -51,6 +52,7 @@
 		D5577F3E1A6ECA1D00CBE0AE /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D5577F401A6ECAB300CBE0AE /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		D557F0251A71886D00FE297B /* SplitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
+		D57853621A781DE100B38587 /* NSViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSViewExtensions.swift; sourceTree = "<group>"; };
 		D5B186851A7197BB00E20C51 /* Page1View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page1View.swift; sourceTree = "<group>"; };
 		D5B186871A7197CB00E20C51 /* ContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		D5B186891A7197E000E20C51 /* Page1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page1ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		D5577F1E1A6EC71400CBE0AE /* SplitViewAutolayout */ = {
 			isa = PBXGroup;
 			children = (
+				D57853611A781DAE00B38587 /* Extensions */,
 				D5577F211A6EC71400CBE0AE /* AppDelegate.swift */,
 				D5577F271A6EC71400CBE0AE /* Main.storyboard */,
 				D5577F401A6ECAB300CBE0AE /* SplitViewController.swift */,
@@ -137,6 +140,14 @@
 				D5577F331A6EC71400CBE0AE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D57853611A781DAE00B38587 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D57853621A781DE100B38587 /* NSViewExtensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D506119E1A718AFE00DEFE4E /* ContainerViewController.swift in Sources */,
+				D57853631A781DE100B38587 /* NSViewExtensions.swift in Sources */,
 				D50611A01A71938100DEFE4E /* MenuViewController.swift in Sources */,
 				D5577F3F1A6ECA1D00CBE0AE /* MenuView.swift in Sources */,
 				D557F0261A71886D00FE297B /* SplitView.swift in Sources */,

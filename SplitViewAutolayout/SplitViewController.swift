@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AppKit
 
 class SplitViewController: NSSplitViewController {
 
@@ -50,15 +51,7 @@ class SplitViewController: NSSplitViewController {
             constant: 300
             ))
     }
-    
-    // Supprime toutes les vues présentes dans la vue passée en paramètre
-    func removeSubviewsFromView(aView : NSView) {
-
-        for view in aView.subviews {
-            view.removeFromSuperview()
-        }
-    }
-    
+        
     func showPage1View() {
         
         // container
@@ -66,25 +59,13 @@ class SplitViewController: NSSplitViewController {
         var containerViewController : NSViewController = container.viewController as NSViewController
         var containerView : NSView = containerViewController.view
         
-        removeSubviewsFromView(containerView)
-        
         // vue à afficher
         var page1ViewController : NSViewController = storyboard?.instantiateControllerWithIdentifier("page_1") as NSViewController
         var page1View : Page1View = page1ViewController.view as Page1View
         
-        page1View.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(page1View)
-
-        // la nouvelle vue doit prendre toute la place disponible
-        containerView.addConstraint(NSLayoutConstraint(item: page1View, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0))
-        
-        containerView.addConstraint(NSLayoutConstraint(item: page1View, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0))
-        
-        containerView.addConstraint(NSLayoutConstraint(item: page1View, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0))
-        
-        containerView.addConstraint(NSLayoutConstraint(item: page1View, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0))
+        self.showView(page1View, containerView: containerView)
     }
-
+    
     func showPage2View() {
         
         // container
@@ -92,25 +73,13 @@ class SplitViewController: NSSplitViewController {
         var containerViewController : NSViewController = container.viewController as NSViewController
         var containerView : NSView = containerViewController.view
         
-        removeSubviewsFromView(containerView)
-        
         // vue à afficher
         var page2ViewController : NSViewController = storyboard?.instantiateControllerWithIdentifier("page_2") as NSViewController
         var page2View : Page2View = page2ViewController.view as Page2View
         
-        page2View.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(page2View)
-        
-        // la nouvelle vue doit prendre toute la place disponible
-        containerView.addConstraint(NSLayoutConstraint(item: page2View, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0))
-        
-        containerView.addConstraint(NSLayoutConstraint(item: page2View, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0))
-        
-        containerView.addConstraint(NSLayoutConstraint(item: page2View, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0))
-        
-        containerView.addConstraint(NSLayoutConstraint(item: page2View, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0))
+        self.showView(page2View, containerView: containerView)
     }
-    
+        
     func showPage3View() {
         
         // container
@@ -118,24 +87,68 @@ class SplitViewController: NSSplitViewController {
         var containerViewController : NSViewController = container.viewController as NSViewController
         var containerView : NSView = containerViewController.view
         
-        removeSubviewsFromView(containerView)
-        
         // vue à afficher
         var secondStoryboard : NSStoryboard = NSStoryboard(name: "SecondStoryboard", bundle: nil)!
         var page3ViewController : NSViewController = secondStoryboard.instantiateControllerWithIdentifier("page_3") as NSViewController
         var page3View : Page3View = page3ViewController.view as Page3View
         
-        page3View.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(page3View)
+        self.showView(page3View, containerView: containerView)
+    }
+    
+    // affiche la nouvelle vue dans la vue "container" avec un effet de translation
+    func showView(newView : NSView, containerView : NSView) {
+        // recherche de la vue à remplacer (optionnelle)
+        var oldView : NSView?
+        if (containerView.subviews.count > 0) {
+            oldView = containerView.subviews[0] as? NSView
+        }
         
-        // la nouvelle vue doit prendre toute la place disponible
-        containerView.addConstraint(NSLayoutConstraint(item: page3View, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0))
+        newView.translatesAutoresizingMaskIntoConstraints = false
         
-        containerView.addConstraint(NSLayoutConstraint(item: page3View, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0))
+        containerView.addSubview(newView)
         
-        containerView.addConstraint(NSLayoutConstraint(item: page3View, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0))
+        // préparation des différents dicos
+        let metricsDico = ["containerWidth" : containerView.frame.width]
+        let newViewDico = ["newView" : newView]
         
-        containerView.addConstraint(NSLayoutConstraint(item: page3View, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0))
-
+        // la nouvelle vue doit avoir la même largeur que la vue "container"
+        let constraintWidthNew = NSLayoutConstraint.constraintsWithVisualFormat("H:[newView(containerWidth)]", options: NSLayoutFormatOptions.allZeros, metrics: metricsDico, views: newViewDico)
+        
+        // et doit prendre la même place verticalement
+        let constraintTopBottomNew = NSLayoutConstraint.constraintsWithVisualFormat("V:|[newView]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: newViewDico)
+        
+        // placement horizontal
+        let constraintTempNew = NSLayoutConstraint.constraintsWithVisualFormat("H:|-containerWidth-[newView]", options: NSLayoutFormatOptions.allZeros, metrics: metricsDico, views: newViewDico)
+        
+        containerView.addConstraints(constraintWidthNew)
+        containerView.addConstraints(constraintTopBottomNew)
+        containerView.addConstraints(constraintTempNew)
+        
+        
+        // animation de la translation de l'ancienne et de la nouvelle vue
+        NSAnimationContext.runAnimationGroup({context in
+            context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            context.duration = 0.5
+            // on déplace la nouvelle vue
+            (constraintTempNew[0] as NSLayoutConstraint).animator().constant = 0
+            // et aussi l'ancienne vue, si elle existe et si la contrainte adéquate a été trouvée
+            if (oldView != nil) {
+                if let constraintLeftOld = oldView!.getConstraintByAttribute(NSLayoutAttribute.Left) as NSLayoutConstraint? {
+                    constraintLeftOld.animator().constant = -containerView.frame.width
+                }
+            }
+            }, completionHandler: {
+                // suppression des contraintes Width et Leading
+                containerView.removeConstraint(constraintTempNew[0] as NSLayoutConstraint)
+                containerView.removeConstraint(constraintWidthNew[0] as NSLayoutConstraint)
+                // pour les remplacer par une contrainte par rapport à la superview
+                let constraintLeadingTrailingNew = NSLayoutConstraint.constraintsWithVisualFormat("H:|[newView]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: newViewDico)
+                containerView.addConstraints(constraintLeadingTrailingNew)
+                
+                // suppression de l'ancienne vue, si elle existe
+                if (oldView != nil) {
+                    oldView!.removeFromSuperview()
+                }
+        })
     }
 }
